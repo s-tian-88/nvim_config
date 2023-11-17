@@ -6,37 +6,43 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
-  use  'joshdick/onedark.vim'
+    use 'joshdick/onedark.vim'
+    use 'nvim-lua/plenary.nvim'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/nvim-cmp'
+    use {
+        'nvim-lualine/lualine.nvim',
+        config = function()
+            require('plugins.lualine')
+        end
+    }
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('plugins.treesitter') 
+        end
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        config = function()
+            require('plugins.telescope')
+        end
+    }
 
-  use 'nvim-lua/plenary.nvim'
-    
-  use 'neovim/nvim-lspconfig'
-
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-
-  use 'hrsh7th/nvim-cmp'
-
-  use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
-      config = function()
-        require('plugins.treesitter') 
-      end
-  }
-    
-  use {
-    'nvim-telescope/telescope.nvim',
-    config = function()
-      require('plugins.telescope')
+    if packer_bootstrap then
+        require('packer').sync()
     end
-  }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 
 end)

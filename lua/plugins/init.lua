@@ -8,13 +8,33 @@ end
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    use 'idanarye/breeze.vim'
+    use 'alvan/vim-closetag'
+    use 'ap/vim-css-color'
     use 'joshdick/onedark.vim'
+    use {
+        'mattn/emmet-vim',
+        config = function()
+            require('plugins.emmet')
+        end
+    }
     use 'nvim-lua/plenary.nvim'
-    use 'neovim/nvim-lspconfig'
+    use {
+        'neovim/nvim-lspconfig',
+        config = function()
+            require('plugins.lsp')
+        end
+    }
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require("nvim-autopairs").setup()
+        end
+    }
     use {
         'nvim-lualine/lualine.nvim',
         config = function()

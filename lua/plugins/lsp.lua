@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', '<space>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
-    map('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    map('n', '<space>gd', vim.lsp.buf.type_definition, opts)
     map('n', '<space>rn', vim.lsp.buf.rename, opts)
     map({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     map('n', 'gr', vim.lsp.buf.references, opts)

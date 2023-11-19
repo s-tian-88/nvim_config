@@ -17,6 +17,14 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.smartindent = true
 
+cmd [[
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+]]
 
 cmd'colorscheme onedark'
-
+-- cmd'colorscheme melange'
+-- cmd'colorscheme nordic'
+-- cmd'colorscheme gruvbox'
+-- cmd'colorscheme tokyonight'
+-- cmd'colorscheme dracula'
+-- cmd'colorscheme rose-pine'

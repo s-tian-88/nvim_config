@@ -11,7 +11,16 @@ return require('packer').startup(function(use)
     use 'idanarye/breeze.vim'
     use 'alvan/vim-closetag'
     use 'ap/vim-css-color'
+
     use 'joshdick/onedark.vim'
+    use "savq/melange-nvim"
+    use 'AlexvZyl/nordic.nvim'
+    use "ellisonleao/gruvbox.nvim"
+    use "folke/tokyonight.nvim"
+    use 'Mofiqul/dracula.nvim'
+    use "shaunsingh/solarized.nvim"
+    use "rose-pine/neovim"
+
     use {
         'mattn/emmet-vim',
         config = function()

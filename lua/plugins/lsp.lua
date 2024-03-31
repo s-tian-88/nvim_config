@@ -1,8 +1,14 @@
 local map = vim.keymap.set
 
--- Setup language servers.
-local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
+require("mason").setup()
+require("mason-lspconfig").setup({
+    automatic_installation = true,
+    ensure_installed = {
+        "bashls", "dockerls", "docker_compose_language_service",
+        "html", "jsonls", "tsserver", "marksman", "pyright",
+        "rust_analyzer", "yamlls", "lua_ls",
+    },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

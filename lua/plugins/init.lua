@@ -10,22 +10,35 @@ end
 -- Load Packer
 cmd([[packadd packer.nvim]])
 
+-- autocmd BufWritePost plugins.lua source <afile> | PackerCompile
 -- Rerun PackerCompile everytime pluggins.lua is updated
 cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost init.lua source <afile> | PackerCompile
   augroup end
 ]])
 
 
+-- Initialization plugins
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
+    use {
+        'neovim/nvim-lspconfig',
+        config = function()
+            require('plugins.lsp')
+        end
+    }
+    use "ray-x/lsp_signature.nvim"
+    
     use 'idanarye/breeze.vim'
     use 'alvan/vim-closetag'
     use 'ap/vim-css-color'
 
+    -- Colorschemes
     use 'joshdick/onedark.vim'
     use "savq/melange-nvim"
     use 'AlexvZyl/nordic.nvim'
@@ -35,6 +48,7 @@ return require('packer').startup(function(use)
     use "shaunsingh/solarized.nvim"
     use "rose-pine/neovim"
 
+    -- HTML emmet
     use {
         'mattn/emmet-vim',
         config = function()
@@ -42,12 +56,6 @@ return require('packer').startup(function(use)
         end
     }
     use 'nvim-lua/plenary.nvim'
-    use {
-        'neovim/nvim-lspconfig',
-        config = function()
-            require('plugins.lsp')
-        end
-    }
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'

@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local opt = vim.opt
 
 -- column, raws
-opt.colorcolumn = '79'
+opt.colorcolumn = '99'
 opt.cursorline = true
 opt.number = true
 opt.rnu = true
@@ -12,7 +12,8 @@ cmd[[
 filetype indent on
 syntax enable
 set nohlsearch
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+set foldmethod=manual
 ]]
 
 opt.showtabline = 2
@@ -21,11 +22,9 @@ opt.shiftwidth = 4
 opt.tabstop = 4
 opt.smartindent = true
 
-
 -- cmd'colorscheme onedark'
 -- cmd'colorscheme melange'
 cmd'colorscheme nordic'
 -- cmd'colorscheme gruvbox'
 -- cmd'colorscheme tokyonight'
--- cmd'colorscheme dracula'
 -- cmd'colorscheme rose-pine'
